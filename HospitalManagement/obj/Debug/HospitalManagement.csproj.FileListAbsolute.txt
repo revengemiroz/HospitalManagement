@@ -1,0 +1,13 @@
+F:\Information Tech\Project TYIT\HospitalManagement\HospitalManagement\bin\HospitalManagement.dll.config
+F:\Information Tech\Project TYIT\HospitalManagement\HospitalManagement\bin\HospitalManagement.dll
+F:\Information Tech\Project TYIT\HospitalManagement\HospitalManagement\bin\HospitalManagement.pdb
+F:\Information Tech\Project TYIT\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.dll
+F:\Information Tech\Project TYIT\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.pdb
+F:\Information Tech\Project TYIT\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.csprojResolveAssemblyReference.cache
+F:\HospitalManagement\HospitalManagement\bin\HospitalManagement.dll.config
+F:\HospitalManagement\HospitalManagement\bin\HospitalManagement.dll
+F:\HospitalManagement\HospitalManagement\bin\HospitalManagement.pdb
+F:\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.csprojResolveAssemblyReference.cache
+F:\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.csproj.CoreCompileInputs.cache
+F:\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.dll
+F:\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.pdb

@@ -1,0 +1,143 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MessageView.aspx.cs" Inherits="HospitalManagement.MessageView" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		
+		<title>Doctor Control Panel</title>
+		
+		
+        <script src="Scripts/jquery-1.11.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+
+	</head>
+
+	<body>
+<form runat="server">
+
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-toggle"></span>
+      </button>
+      <a class="navbar-brand" href="#">Doctor Panel</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+            <i class="glyphicon glyphicon-user"></i> <asp:Label ID="DMName" runat="server"
+                 Text="Label"></asp:Label> <span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+            
+            <li>&nbsp;<i class="glyphicon glyphicon-lock"></i>
+                <asp:Button ID="DoctorLogOut" runat="server" Text="Log Out" CssClass="btn btn-link"
+                     OnClick="DMLogOut_Click1" />
+            </li>
+           
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  
+  
+  <div class="row">
+	<div class="col-sm-3">
+      
+      <h3 class="text-center"> <i class="glyphicon glyphicon-briefcase"></i> MENU</h3>
+      <hr>
+      <div class="panel panel-body panel-danger">
+      <ul class="nav nav-stacked ">
+       <li><a href="Doctor.aspx"><i class="glyphicon glyphicon-link"></i> Main Page</a></li>
+        <li><a href="Docpatient.aspx"><i class="glyphicon glyphicon-flash"></i> Patient details</a></li>
+        <li><a href="NewPatientDocForm.aspx"><i class="glyphicon glyphicon-list-alt"></i> New patient</a></li>
+        <li><a href="Message.aspx"><i class="glyphicon glyphicon-link"></i> Send message</a></li>
+          <li><a href="MessageView.aspx"><i class="glyphicon glyphicon-link"></i> View messages</a></li>
+          <li><a href="Reportform.aspx"><i class="glyphicon glyphicon-link"></i> Create A Report</a></li>
+          <li><a href="ReportView.aspx"><i class="glyphicon glyphicon-link"></i> View Reports</a></li>
+
+        
+      </ul>
+      </div>
+      <hr>
+      
+  	</div>
+    <div class="col-sm-9">
+      	
+      	
+       <h3 class="text-center"><i class="glyphicon glyphicon-dashboard"></i> VIEW MESSAGES</h3>  
+            
+       <hr>
+      
+	   <div class="row">
+            	
+         	<div class="col-md-12">
+                  
+			  <div class="well text-center text-danger">Remember to log out before exiting the page <span class="badge pull-right">!</span></div>
+              
+              <hr>
+              <asp:TextBox ID="userBox" runat="server" Enabled="false" CssClass="form-control text-center alert-success" ToolTip="your username"  ></asp:TextBox>  
+              <br />
+         
+            
+        	<div class="col-md-11">
+                <asp:SqlDataSource ID="Sqlmess" runat="server" ConnectionString="<%$ ConnectionStrings:KanirmaConnections %>" DeleteCommand="DELETE FROM [Messages] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Messages] ([Recieve], [Sender], [Message]) VALUES (@Recieve, @Sender, @Message)" SelectCommand="SELECT * FROM [Messages]" FilterExpression="Recieve LIKE '{0}%' OR Sender LIKE '{0}%' " UpdateCommand="UPDATE [Messages] SET [Recieve] = @Recieve, [Sender] = @Sender, [Message] = @Message WHERE [Id] = @Id">
+                   <FilterParameters>
+                        <asp:ControlParameter Name="Sender" ControlID="userBox" PropertyName="Text"/>
+                    </FilterParameters> 
+                    
+                    <DeleteParameters>
+                        <asp:Parameter Name="Id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="Recieve" Type="String" />
+                        <asp:Parameter Name="Sender" Type="String" />
+                        <asp:Parameter Name="Message" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:SessionParameter Name="New" SessionField="New" Type="String" />
+                    </SelectParameters> 
+                    <UpdateParameters>
+                        <asp:Parameter Name="Recieve" Type="String" />
+                        <asp:Parameter Name="Sender" Type="String" />
+                        <asp:Parameter Name="Message" Type="String" />
+                        <asp:Parameter Name="Id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-hover" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="Sqlmess">
+                    <Columns>
+                        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                        <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                        <asp:BoundField DataField="Recieve" HeaderText="Reciever" SortExpression="Recieve" />
+                        <asp:BoundField DataField="Sender" HeaderText="Sender" SortExpression="Sender" />
+                        <asp:BoundField DataField="Message" HeaderText="Message" SortExpression="Message" />
+                    </Columns>
+                </asp:GridView>
+              
+			</div>
+     
+       </div>
+     </div>
+  	</div>
+    
+  </div>
+  
+  
+  
+  
+
+    </div>
+</form>
+</body>
+</html>
